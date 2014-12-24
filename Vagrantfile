@@ -23,7 +23,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Provider-specific VM configuration.
   config.vm.provider :virtualbox do |v|
       v.name = "Lamp"
-      v.customize ["modifyvm", :id, "--memory", 512]
+      v.customize ["modifyvm", :id, "--memory", 1024]
       # vb.customize ["modifyvm", :id, "--cpus", "2"]
       # vb.gui = true
   end
