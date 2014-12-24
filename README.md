@@ -45,6 +45,10 @@ Clone this repository to a local directory and change the name of it:
 
     git clone https://github.com/JulienD/vagrant-ansible-server-playbooks.git lamp-dev-env
 
+You should install vbguest to use vboxsf:
+
+    vagrant plugin install vagrant-vbguest
+
 Go into the directory and run:
 
     vagrant up
