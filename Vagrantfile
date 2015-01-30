@@ -15,7 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network :private_network, ip: "33.33.33.20"
 
   # Shared folders.
-  config.vm.synced_folder "data", "/home/vagrant/data", create: true, id: "vagrant-data",
+  config.vm.synced_folder "/Users/goz/Documents/Projects/www", "/home/vagrant/data", create: true, id: "vagrant-root",
     owner: "vagrant",
     group: "www-data",
     mount_options: ["dmode=775,fmode=764"]

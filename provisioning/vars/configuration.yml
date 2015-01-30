@@ -2,10 +2,11 @@
 ####
 # Apache
 apache_vhost:
-- { vhost: 'example-a.local', docroot: 'example_a' }
-- { vhost: 'example-b.local', docroot: 'example_b' }
+- { vhost: 'local.mk2.com', docroot: 'mk2/www' }
+- { vhost: 'sandbox.local', docroot: 'sandbox' }
 
 ####
 # mysql
 mysql_db:
-  - { name: 'example_a' }
+  - { name: 'mk2' }
+  - { name: 'commerce_kickstart' }
