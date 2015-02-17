@@ -68,16 +68,18 @@
     # Add swap.
     #
     - name: Common | Define Swap file.
-      action: dd if=/dev/zero of=/swapfile bs=1M count={{ swap_size }}
+      command: dd if=/dev/zero of=/swapfile bs=1M count={{ swap_size }}
+      when: ansible_swaptotal_mb < 1
       tags: common
     - name: Common | Create Swap.
-      action: mkswap /swapfile
-      tags: common
-    - name: Common | Enable Swap.
-      action: swapon /swapfile
+      command: mkswap /swapfile
+      when: ansible_swaptotal_mb < 1
       tags: common
     - name: Common | Add Swap to fstab.
-      action: echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+      shell: echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
+      tags: common
+    - name: Common | Enable Swap.
+      command: swapon -a
       tags: common
 
 
