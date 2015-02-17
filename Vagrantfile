@@ -16,9 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Shared folders.
   config.vm.synced_folder "/Users/goz/Documents/Projects/www", "/home/vagrant/data", create: true, id: "vagrant-root",
-    owner: "vagrant",
-    group: "www-data",
-    mount_options: ["dmode=775,fmode=764"]
+    nfs: true
 
   # Provider-specific VM configuration.
   config.vm.provider :virtualbox do |v|
