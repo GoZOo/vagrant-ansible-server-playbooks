@@ -109,6 +109,12 @@ max_binlog_size         = 100M
 character_set_server = {{ mysql_character_set_server }}
 collation_server = {{ mysql_collation_server }}
 
+# CUSTOM CONFIGURATION OPTIM PERFS
+innodb_buffer_pool_size = 400M
+innodb_flush_log_at_trx_commit = 0
+innodb_doublewrite = 0
+# END CUSTOM
+
 [mysqldump]
 quick
 quote-names
