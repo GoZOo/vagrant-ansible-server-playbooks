@@ -191,6 +191,17 @@
       tags: common
       shell: curl -sS https://getcomposer.org/installer | /usr/bin/php && /bin/mv -f /home/vagrant/composer.phar /usr/local/bin/composer creates=/usr/local/bin/composer
 
+    ##
+    # Platform CLI
+    #
+    - name: Platform CLI | Install Platform CLI with Composer.
+      shell: /usr/local/bin/composer global require 'platformsh/cli:1.*' --no-progress 
+      tags: platform
+
+    - name: Platform CLI | Configure composer home path
+      copy: src=files/platform-cli.sh dest=/etc/profile.d/platform-cli.sh mode=0755
+      tags: platform
+      sudo: yes
 
     ##
     # MySQL database setup.
