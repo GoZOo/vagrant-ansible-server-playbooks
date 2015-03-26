@@ -262,6 +262,11 @@
       file: src=/usr/local/share/drush/drush dest=/usr/local/bin/drush state=link
       tags: drush
 
+    - name: Drush | Create symlink to drush complete bash.
+      file: src=/usr/local/share/drush/drush.complete.sh dest=/etc/bash_completion.d/drush.complete.sh state=link
+      tags: drush
+      sudo: yes
+
 
     ##
     # Restart services
