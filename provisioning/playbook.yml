@@ -253,7 +253,7 @@
 
     - name: Drush | Install Drush dependencies with Composer.
       shell: >
-        /usr/local/bin/composer install --prefer-source --no-interaction
+        /usr/local/bin/composer global require drush/drush:dev-master --prefer-source --no-interaction
         chdir=/usr/local/share/drush
         creates=/usr/local/share/drush/vendor/autoload.php
       tags: drush
