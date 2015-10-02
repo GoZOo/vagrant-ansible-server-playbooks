@@ -65,6 +65,16 @@
         - vim
 
     ##
+    # Installation of compass.
+    #
+    - name: Common | Install compass.
+      apt: pkg={{ item }} state=installed force=yes
+      tags: common
+      with_items:
+        - ruby-compass
+        - bundler
+
+    ##
     # Add swap.
     #
     - name: Common | Define Swap file.
