@@ -194,6 +194,21 @@
       action: template src=templates/php-xdebug.j2 dest=/etc/php5/mods-available/xdebug.ini
       tags: common
 
+    - name: Pear update
+      tags: common
+      shell: pear upgrade pear
+      sudo: yes
+
+    - name: Install xhprof
+      tags: common
+      shell: pecl install -f xhprof
+      sudo: yes
+
+    - name: PHP | xhprof configuration
+      action: template src=templates/php5-xhprof-php-ini.j2 dest=/etc/php5/mods-available/xhprof.ini
+      tags: common
+
+
 
     ##
     # Composer
