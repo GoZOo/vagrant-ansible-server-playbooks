@@ -176,6 +176,7 @@
         - php5-xmlrpc
         - php5-gd
         - php5-intl
+        - php5-mcrypt
         - libapache2-mod-php5
         - libpcre3-dev
         - memcached
