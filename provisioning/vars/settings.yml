@@ -8,7 +8,7 @@
 common_upgrade: false
 local: 'fr_FR.UTF-8'
 # SWAP in Mo
-swap_size: 1024
+swap_size: 2048
 
 # Hostname is important as we need to delete an anonymous MySQL
 # user that is created with this name, make sure you match this
