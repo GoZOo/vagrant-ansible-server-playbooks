@@ -18,7 +18,7 @@
     # Update the box and install common softwares.
     #
     - name: Common | Install 'python-apt' module
-      apt: pkg=python-apt state=present
+      apt: name=python-apt state=present
       tags: common
 
     - name: Common | Upgrade all packages
@@ -26,7 +26,7 @@
       tags: common
 
     - name: Common | Install the locales package
-      apt: pkg=locales state=present
+      apt: name=locales state=present
 
     - name: Common | Ensure the locale exists
       command: /usr/sbin/locale-gen {{ locale }}
@@ -39,7 +39,7 @@
     # Installs NTP.
     #
     - name: Common | Install NTP
-      apt: pkg={{ item }} state=present
+      apt: name={{ item }} state=present
       with_items:
         - ntp
         - ntpdate
@@ -53,7 +53,7 @@
     # Installation of common software.
     #
     - name: Common | Install misc utils.
-      apt: pkg={{ item }} state=installed force=yes
+      apt: name={{ item }} state=installed force=yes
       tags: common
       with_items:
         - htop
@@ -68,7 +68,7 @@
     # Installation of compass.
     #
     - name: Common | Install compass.
-      apt: pkg={{ item }} state=installed force=yes
+      apt: name={{ item }} state=installed force=yes
       tags: common
       with_items:
         - ruby-compass
@@ -97,7 +97,7 @@
     # Python setup
     #
     - name: Common | Install misc utils.
-      apt: pkg={{ item }} state=installed force=yes
+      apt: name={{ item }} state=installed force=yes
       tags: common
       with_items:
         - python-software-properties
@@ -109,7 +109,7 @@
     # GIT Setup.
     #
     - name: Git | Install git base packages
-      apt: pkg=git-core state=installed force=yes
+      apt: name=git-core state=installed force=yes
       tags: common
 
 
@@ -117,7 +117,7 @@
     # Apache2 setup.
     #
     - name: Apache | Install required packages.
-      apt: pkg=apache2 state=latest force=yes
+      apt: name=apache2 state=latest force=yes
       tags: common
 
     - name: Apache | Configuration file for our site
@@ -161,7 +161,7 @@
     # PHP Setup.
     #
     - name: PHP | Install required packages.
-      apt: pkg={{ item }} state=installed force=yes
+      apt: name={{ item }} state=installed force=yes
       tags: common
       with_items:
         - php5
@@ -233,7 +233,7 @@
     # MySQL database setup.
     #
     - name: General | Install required packages.
-      apt: pkg={{ item }} state=installed force=yes
+      apt: name={{ item }} state=installed force=yes
       tags: common
       with_items:
         - mysql-server
