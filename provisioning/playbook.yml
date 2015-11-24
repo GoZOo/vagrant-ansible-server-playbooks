@@ -88,9 +88,6 @@
     - name: Common | Add Swap to fstab.
       shell: echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
       tags: common
-    - name: Common | Disable Swap.
-      command: swapoff -a
-      tags: common
     - name: Common | Enable Swap.
       command: swapon -a
       tags: common
