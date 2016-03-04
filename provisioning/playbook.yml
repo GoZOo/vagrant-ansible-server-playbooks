@@ -29,6 +29,9 @@
     - name: Common | Install the locales package
       apt: name=locales state=present
 
+    - name: Common | Install the apt-transport-https package
+      apt: name=apt-transport-https state=present
+
     - name: Common | Ensure the locale exists
       command: /usr/sbin/locale-gen {{ locale }}
 
@@ -284,11 +287,15 @@
       tags: common
 
     ##
-    # Drush.
+    # Varnish setup.
     #
-    - name: Drush | Clone Drush from GitHub.
-      git: repo=https://github.com/drush-ops/drush.git dest=/usr/local/share/drush
-      tags: drush
+    - name: Varnish | Add varnish depo
+      action: template src=templates/varnish-cache.list dest=/etc/apt/sources.list.d/varnish-cache.list
+      tags: common
+
+    - name: Varnish | Install varnish packages.
+      apt: name=varnish state=installed force=yes update_cache=yes
+      tags: common
 
     ##
     # Drush.
