@@ -86,6 +86,9 @@
       command: mkswap /swapfile
       when: ansible_swaptotal_mb < 2
       tags: common
+    - name: Common | remove previous swapfile from fstab.
+      shell: sed --in-place '/\/swapfile /d' /etc/fstab
+      tags: common
     - name: Common | Add Swap to fstab.
       shell: echo "/swapfile swap swap defaults 0 0" >> /etc/fstab
       tags: common
