@@ -232,7 +232,7 @@
     ##
     # MySQL database setup.
     #
-    - name: General | Install required packages.
+    - name: MySQL | Install required packages.
       apt: name={{ item }} state=installed force=yes
       tags: common
       with_items:
