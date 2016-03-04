@@ -18,3 +18,32 @@
   LogLevel warn
   ServerSignature Off
 </VirtualHost>
+
+<VirtualHost *:443>
+  ServerName www.{{ item.vhost }}
+  ServerAdmin webmaster@{{ item.vhost }}
+  ServerAlias {{ item.vhost }}
+
+  DocumentRoot {{ apache_root}}/{{ item.docroot }}
+
+  SSLEngine on
+
+  SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+  SSLCertificateFile /etc/ssl/certs/ssl-cert-snakeoil.pem
+
+  # And some extras, copied from Apache's default SSL conf virtualhost
+  <FilesMatch "\.(cgi|shtml|phtml|php)$">
+      SSLOptions +StdEnvVars
+  </FilesMatch>
+
+  <Directory {{ apache_root}}/{{ item.docroot }}>
+    Options Indexes FollowSymLinks MultiViews
+    AllowOverride All
+    Require all granted
+  </Directory>
+
+  CustomLog ${APACHE_LOG_DIR}/access_{{ item.vhost }}.log combined
+  ErrorLog ${APACHE_LOG_DIR}/error_{{ item.vhost }}.log
+  LogLevel warn
+  ServerSignature Off
+</VirtualHost>

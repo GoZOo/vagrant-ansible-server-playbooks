@@ -127,6 +127,18 @@
       action: template src=templates/apache2-default-virtualhost.j2 dest=/etc/apache2/sites-available/default
       tags: common
 
+    - name: Apache | Create Apache confs
+      template: src=templates/{{ item }}.conf dest=/etc/apache2/conf-available/{{ item }}.conf owner=root mode=0744
+      tags: common
+      with_items:
+        - fqdn
+
+    - name: Apache | Enable confs
+      command: a2enconf {{ item }}
+      tags: common
+      with_items:
+        - fqdn
+
     - name: Apache | Enable module | Enable $module
       command: a2enmod {{ item }} creates=/etc/apache2/mods-enabled/$apache_modules.load
       tags: common
@@ -136,6 +148,7 @@
         - headers
         - expires
         - filter
+        - ssl
 
     - name: Apache | Remove default Apache vhosts
       file: path=/etc/apache2/sites-enabled/000-default.conf state=absent
